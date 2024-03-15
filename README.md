@@ -1,2 +1,9 @@
 # react-native-unused-styles
-This is a NodeJS script that allows the developer to spot unused styles in a component file.
+Do you want to know the unused tyles left in a component file before commiting it?
+You can do it just by:
+
+- Clone this repo.
+- Install dependencies: `yarn install`
+- In the repo folder execute: `node checkUnusedStyles.js`
+- Enter the abolute path of the file when requested.
+
