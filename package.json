@@ -1,0 +1,12 @@
+{
+  "name": "style-checker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/parser": "7.24.0",
+    "@babel/preset-typescript": "7.23.3",
+    "@babel/traverse": "7.24.0",
+    "fs": "0.0.1-security"
+  }
+}
