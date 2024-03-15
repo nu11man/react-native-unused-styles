@@ -3,6 +3,8 @@ const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const readline = require('readline');
 
+const isStyleSheetCreateCall = (initCallee) => initCallee?.object?.name === 'StyleSheet' && initCallee?.property?.name === 'create'
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -35,7 +37,8 @@ rl.question('Enter the path to the React Native component file: ', (filePath) =>
     traverse(ast, {
       // Find StyleSheet.create({...}) definitions
       VariableDeclarator(path) {
-        if (path.node.init && path.node.init.callee && path.node.init.callee.object && path.node.init.callee.object.name === 'StyleSheet' && path.node.init.callee.property.name === 'create') {
+        const initCallee = path.node.init?.callee
+        if (isStyleSheetCreateCall(initCallee)) {
           path.node.init.arguments[0].properties.forEach((prop) => {
             const key = prop.key.name;
             styleSheetNames.add(key);
